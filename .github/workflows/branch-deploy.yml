@@ -2,7 +2,7 @@ name: Branch Based Deploy
 
 on:
   push:
-    branches: [ development, main ]
+    branches: [ devlopment, main ]
 
 jobs:
   deploy-dev:
