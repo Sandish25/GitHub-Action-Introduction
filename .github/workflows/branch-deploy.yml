@@ -1,0 +1,30 @@
+name: Branch Based Deploy
+
+on:
+  push:
+    branches: [ development, main ]
+
+jobs:
+  deploy-dev:
+    if: github.ref == 'refs/heads/development'
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Deploy to development
+        run: |
+          echo "Branch      : ${{ github.ref_name }}"
+          echo "Environment : ${{ vars.APP_ENV }}"
+          echo "Deploying to the DEVELOPMENT environment"
+
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Deploy to production
+        run: |
+          echo "Branch      : ${{ github.ref_name }}"
+          echo "Environment : ${{ vars.APP_ENV }}"
+          echo "Deploying to the PRODUCTION environment"
