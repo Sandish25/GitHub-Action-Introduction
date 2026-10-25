@@ -27,6 +27,7 @@ jobs:
           path: dist/
 
   test:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -40,6 +41,7 @@ jobs:
         run: npm test
 
   package:
+    needs: [build, test]
     runs-on: ubuntu-latest
 
     steps:
